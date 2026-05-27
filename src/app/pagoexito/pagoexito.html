@@ -1,0 +1,18 @@
+<div class="success-container">
+  <div class="cloud-icon">☁️✨</div>
+  <h2>¡Pago Completado!</h2>
+  <p>Tu pedido está siendo preparado con mucho cariño.</p>
+
+  <div class="receipt-card">
+    <div class="detail-row">
+      <span class="label">Producto:</span>
+      <span class="value">{{ datos.producto }}</span>
+    </div>
+    <div class="total-row detail-row">
+      <span class="label">Total Pagado:</span>
+      <span class="value" style="color: #4a90e2;">{{ datos.total | currency }} MXN</span>
+    </div>
+  </div>
+
+  <a routerLink="/catalogo" class="btn-home">Volver al Inicio</a>
+</div>

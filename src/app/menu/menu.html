@@ -1,17 +1,16 @@
 <nav class="menu-container">
   <div class="menu-content">
     <!-- Logo/Título -->
-    <div class="menu-logo">
+    <div class="menu-logo" (click)="irAVista('inicio')" style="cursor: pointer;">
       <span class="logo-icon">☁️</span>
       <h2>NubeCobertores</h2>
     </div>
 
     <!-- Opciones del menú -->
     <ul class="menu-links">
-      <li><a href="#inicio" class="menu-link">Inicio</a></li>
-      <li><a href="#catalogo" class="menu-link">Catálogo</a></li>
-      <li><a href="#servicios" class="menu-link">Servicios</a></li>
-      <li><a href="#contacto" class="menu-link">Contacto</a></li>
+      <li><button class="menu-link" (click)="irAVista('inicio')">Inicio</button></li>
+      <li><button class="menu-link" (click)="irAVista('catalogo')">Catálogo</button></li>
+      <li><button class="menu-link" (click)="irAVista('contacto')">Contacto</button></li>
     </ul>
 
     <!-- Carrito a la derecha -->

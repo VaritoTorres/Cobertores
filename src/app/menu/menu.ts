@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, output } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { Carrito } from '../carrito/carrito';
 
@@ -10,6 +10,12 @@ import { Carrito } from '../carrito/carrito';
 })
 export class Menu {
   mostrarCarrito = signal(false);
+  // Output para cambiar de vista
+  vistaChange = output<'inicio' | 'catalogo' | 'contacto'>();
+
+  irAVista(vista: 'inicio' | 'catalogo' | 'contacto') {
+    this.vistaChange.emit(vista);
+  }
 
   toggleCarrito() {
     this.mostrarCarrito.update(valor => !valor);

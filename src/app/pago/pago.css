@@ -1,0 +1,174 @@
+.pago-container {
+  max-width: 520px; /* Reducido un poco para que se vea más compacto y estético */
+  margin: 40px auto;
+  padding: 32px;
+  background: #fdfeff; /* Blanco puro/suave */
+  border-radius: 24px; /* Bordes extra redondeados estilo nube */
+  box-shadow: 0 16px 40px rgba(164, 188, 214, 0.25); /* Sombra esponjosa con tono azulado */
+  font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+  border: 1px solid rgba(220, 234, 245, 0.6);
+}
+
+.pago-container h2 {
+  margin: 0 0 4px 0;
+  color: #2c3e50;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.row {
+  margin-bottom: 18px;
+}
+
+.row label {
+  display: block;
+  font-size: 13px;
+  color: #5a6b7c;
+  margin-bottom: 6px;
+  font-weight: 600;
+  padding-left: 4px;
+}
+
+.row input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #eef3f8;
+  border-radius: 14px; /* Inputs redondeados y cómodos */
+  font-size: 15px;
+  background-color: #f8fafc;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Efecto de enfoque suave */
+.row input:focus {
+  outline: none;
+  border-color: #bad7f2;
+  background-color: #ffffff;
+  box-shadow: 0 0 12px rgba(186, 215, 242, 0.4);
+}
+
+.row.split {
+  display: flex;
+  gap: 16px;
+}
+.row.split > div {
+  flex: 1;
+}
+
+/* --- Apartado del Total (Estilo Cobertor/Nube) --- */
+.total-badge {
+  margin: 28px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #f0f7ff 0%, #e3f0ff 100%); /* Fondo azul cielo suave */
+  border: 2px dashed #bcd8f7; /* Costura estilo edredón/cobertor */
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.8);
+}
+
+.total-label {
+  font-size: 15px;
+  color: #4b6584;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.total-amount {
+  font-size: 24px;
+  color: #227093;
+  font-weight: 800;
+}
+
+.total-amount .currency {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4b6584;
+}
+
+/* --- Botones --- */
+.actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 14px;
+}
+
+.btn {
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+  border: none;
+}
+
+/* Botón Principal - Nube activa */
+.btn-primary {
+  background: #4a90e2;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.3);
+}
+
+.btn-primary:hover {
+  background: #357abd;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(74, 144, 226, 0.4);
+}
+
+/* Botón Secundario/Cancelar */
+.btn-secondary {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.btn-secondary:hover {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* --- Estados opcionales de éxito/error --- */
+.pago-error {
+  background: #fff0f0;
+  color: #c0392b;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  border-left: 4px solid #e74c3c;
+}
+
+@media (max-width: 600px) {
+  .pago-container {
+    margin: 16px;
+    padding: 20px;
+  }
+  .row.split {
+    flex-direction: column;
+    gap: 0;
+  }
+  .actions {
+    flex-direction: column-reverse; /* El botón principal queda arriba en móviles */
+  }
+}

@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
+
 import { Home } from './home/home';
 import { Productos } from './productos/productos';
+
 import { Carrito } from './carrito/carrito';
 import { Catalogo } from './catalogo/catalogo';
 import { Principal } from './principal/principal';
 import { Pago } from './pago/pago';
-
+import { Pagoexito } from './pagoexito/pagoexito';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -13,5 +15,6 @@ export const routes: Routes = [
   { path: 'principal', component: Principal },
   { path: 'catalogo', component: Catalogo },
   { path: 'carrito', component: Carrito },
-  { path: 'pago', component: Pago }
+  { path: 'pago', component: Pago },
+  { path: 'pagoexito', component: Pagoexito }
 ];
