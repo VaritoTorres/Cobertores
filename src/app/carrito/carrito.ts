@@ -1,13 +1,16 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { NgIf, NgFor } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrito',
+  standalone: true,
   imports: [NgIf, NgFor],
   templateUrl: './carrito.html',
   styleUrl: './carrito.css',
 })
 export class Carrito {
+  private readonly router = inject(Router);
   // Señales para el estado del carrito
   items = signal<any[]>([]);
   subtotal = signal(0);
@@ -44,5 +47,13 @@ export class Carrito {
   private actualizarTotal() {
     const total = this.items().reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
     this.subtotal.set(total);
+  }
+
+  procederAlPago() {
+    if (this.items().length === 0) {
+      return;
+    }
+
+    this.router.navigate(['/pago']);
   }
 }

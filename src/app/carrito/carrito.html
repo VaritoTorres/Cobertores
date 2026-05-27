@@ -45,7 +45,7 @@
 
   <!-- Botones de acción -->
   <div class="carrito-acciones">
-    <button class="btn-comprar" [disabled]="items().length === 0">Proceder al Pago</button>
+    <button class="btn-comprar" type="button" (click)="procederAlPago()" [disabled]="items().length === 0">Proceder al Pago</button>
     <button class="btn-seguir-comprando">Seguir Comprando</button>
   </div>
 

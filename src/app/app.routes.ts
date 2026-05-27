@@ -4,14 +4,14 @@ import { Productos } from './productos/productos';
 import { Carrito } from './carrito/carrito';
 import { Catalogo } from './catalogo/catalogo';
 import { Principal } from './principal/principal';
+import { Pago } from './pago/pago';
 
 
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'productos', component: Productos },
-
   { path: 'principal', component: Principal },
   { path: 'catalogo', component: Catalogo },
-  { path: 'carrito', component: Carrito }
-  { path: 'carrito', component: Carrito }
+  { path: 'carrito', component: Carrito },
+  { path: 'pago', component: Pago }
 ];
