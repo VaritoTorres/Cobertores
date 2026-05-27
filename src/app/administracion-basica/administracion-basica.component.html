@@ -1,1 +1,59 @@
-<p>administracion-basica works!</p>
+<div class="admin-container">
+  
+  <!-- SECCIÓN 1: REPORTES DE VENTAS -->
+  <h2 class="title">Panel de Administración</h2>
+  <div class="reports-grid">
+    <div class="report-card">
+      <h3>${{reporteGuanacias}}</h3>
+      <p>Total de Ventas</p>
+    </div>
+    <div class="report-card">
+      <h3>{{productosVendidos}}</h3>
+      <p>Artículos Despachados</p>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2: FORMULARIO DE ALTAS -->
+  <div class="management-section">
+    <div class="form-card">
+      <h3>Agregar Nuevo Producto</h3>
+      <form [formGroup]="formProducto" (submit)="agregarProducto()" class="admin-form">
+        
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nombre del Producto</mat-label>
+          <input matInput formControlName="nombre" placeholder="Ej. Lazo Coquette">
+          <mat-error *ngIf="formProducto.get('nombre')?.invalid">{{ obtenerError('nombre') }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Precio</mat-label>
+          <input matInput type="number" formControlName="precio" placeholder="0.00">
+          <mat-error *ngIf="formProducto.get('precio')?.invalid">{{ obtenerError('precio') }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Stock Inicial</mat-label>
+          <input matInput type="number" formControlName="stock" placeholder="0">
+          <mat-error *ngIf="formProducto.get('stock')?.invalid">{{ obtenerError('stock') }}</mat-error>
+        </mat-form-field>
+
+        <button class="btn-save" type="submit" [disabled]="formProducto.invalid">Guardar en Inventario</button>
+      </form>
+    </div>
+
+    <!-- SECCIÓN 3: TABLA DE INVENTARIO (BAJAS Y CAMBIOS) -->
+    <div class="table-card">
+      <h3>Inventario Actual</h3>
+      <div class="products-list">
+        <div *ngFor="let prod of productos" class="product-item">
+          <div class="prod-info">
+            <strong>{{prod.nombre}}</strong>
+            <span>${{prod.precio}} | Cantidad: {{prod.stock}}</span>
+          </div>
+          <button class="btn-delete" (click)="eliminarProducto(prod.id)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
