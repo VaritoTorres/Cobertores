@@ -10,7 +10,6 @@ import { Principal } from './principal/principal';
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'productos', component: Productos },
-
   { path: 'principal', component: Principal },
   { path: 'catalogo', component: Catalogo },
   { path: 'carrito', component: Carrito }

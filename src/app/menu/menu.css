@@ -64,12 +64,16 @@
 
 .menu-link {
   color: rgba(255, 255, 255, 0.9);
+  background: none;
+  border: none;
   text-decoration: none;
   font-size: 1em;
   font-weight: 500;
   position: relative;
   transition: all 0.3s ease;
   padding-bottom: 5px;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .menu-link::after {

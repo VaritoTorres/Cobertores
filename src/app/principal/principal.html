@@ -1,4 +1,18 @@
-<app-menu></app-menu>
+<app-menu (vistaChange)="cambiarVista($event)"></app-menu>
 <main style="margin-top: 80px;">
-  <app-catalogo></app-catalogo>
+  @if (vistaActual() === 'inicio') {
+    <div class="vista-inicio">
+      <section class="hero">
+        <h1>Bienvenido a NubeCobertores</h1>
+        <p>Los mejores cobertores en la nube ☁️</p>
+        <button class="btn-hero" (click)="cambiarVista('catalogo')">Ver Catálogo</button>
+      </section>
+    </div>
+  }
+  @if (vistaActual() === 'catalogo') {
+    <app-catalogo></app-catalogo>
+  }
+  @if (vistaActual() === 'contacto') {
+    <app-contacto></app-contacto>
+  }
 </main>
