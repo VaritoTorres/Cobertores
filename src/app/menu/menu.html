@@ -1,0 +1,34 @@
+<nav class="menu-container">
+  <div class="menu-content">
+    <!-- Logo/Título -->
+    <div class="menu-logo">
+      <span class="logo-icon">☁️</span>
+      <h2>NubeCobertores</h2>
+    </div>
+
+    <!-- Opciones del menú -->
+    <ul class="menu-links">
+      <li><a href="#inicio" class="menu-link">Inicio</a></li>
+      <li><a href="#catalogo" class="menu-link">Catálogo</a></li>
+      <li><a href="#servicios" class="menu-link">Servicios</a></li>
+      <li><a href="#contacto" class="menu-link">Contacto</a></li>
+    </ul>
+
+    <!-- Carrito a la derecha -->
+    <div class="menu-carrito">
+      <button class="carrito-btn" (click)="toggleCarrito()">
+        <span class="carrito-icon">🛒</span>
+        <span class="carrito-label">Carrito</span>
+        <span class="carrito-badge" *ngIf="false">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Modal del carrito -->
+<div class="carrito-modal" [class.active]="mostrarCarrito()" (click)="cerrarCarritoSiEsOverlay($event)">
+  <div class="carrito-modal-content" (click)="$event.stopPropagation()">
+    <button class="btn-cerrar-carrito" (click)="toggleCarrito()">✕</button>
+    <app-carrito></app-carrito>
+  </div>
+</div>
