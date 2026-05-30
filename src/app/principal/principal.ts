@@ -1,19 +1,24 @@
-import { Component, signal } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { Component, inject, signal } from '@angular/core';
 import { Menu } from '../menu/menu';
 import { Catalogo } from '../catalogo/catalogo';
 import { Contacto } from '../contacto/contacto';
+import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-principal',
-  imports: [Menu, Catalogo, Contacto, NgIf],
+  imports: [Menu, Catalogo, Contacto],
   templateUrl: './principal.html',
   styleUrl: './principal.css',
 })
 export class Principal {
-  vistaActual = signal<'inicio' | 'catalogo' | 'contacto'>('inicio');
+  private auth = inject(Auth);
+  vistaActual = signal<'inicio' | 'catalogo' | 'contacto'>('catalogo');
 
   cambiarVista(vista: 'inicio' | 'catalogo' | 'contacto') {
-    this.vistaActual.set(vista);
+    if (vista === 'inicio') {
+      this.auth.logout();
+    } else {
+      this.vistaActual.set(vista);
+    }
   }
 }

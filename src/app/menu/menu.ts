@@ -1,14 +1,17 @@
-import { Component, signal, output } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { Component, signal, output, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Carrito } from '../carrito/carrito';
+import { AdminPasswordComponent } from '../admin-password/admin-password.component';
 
 @Component({
   selector: 'app-menu',
-  imports: [NgIf, Carrito],
+  imports: [CommonModule, Carrito, AdminPasswordComponent],
   templateUrl: './menu.html',
   styleUrl: './menu.css',
 })
 export class Menu {
+  @ViewChild(AdminPasswordComponent) adminPassword!: AdminPasswordComponent;
+
   mostrarCarrito = signal(false);
   // Output para cambiar de vista
   vistaChange = output<'inicio' | 'catalogo' | 'contacto'>();
@@ -19,6 +22,10 @@ export class Menu {
 
   toggleCarrito() {
     this.mostrarCarrito.update(valor => !valor);
+  }
+
+  abrirAdminPassword() {
+    this.adminPassword.abrirModal();
   }
 
   cerrarCarritoSiEsOverlay(event: MouseEvent) {

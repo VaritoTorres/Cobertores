@@ -9,6 +9,7 @@ import { Catalogo } from './catalogo/catalogo';
 import { Principal } from './principal/principal';
 import { Pago } from './pago/pago';
 import { Pagoexito } from './pagoexito/pagoexito';
+import { AdministracionBasicaComponent } from './administracion-basica/administracion-basica.component';
 
 export const routes: Routes = [
   { path: '', component: Login },
@@ -18,5 +19,6 @@ export const routes: Routes = [
   { path: 'catalogo', component: Catalogo },
   { path: 'carrito', component: Carrito },
   { path: 'pago', component: Pago },
-  { path: 'pagoexito', component: Pagoexito }
+  { path: 'pagoexito', component: Pagoexito },
+  { path: 'administracion', component: AdministracionBasicaComponent }
 ];

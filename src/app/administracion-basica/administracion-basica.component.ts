@@ -1,32 +1,23 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-
-interface Producto {
-  id: number;
-  nombre: string;
-  precio: number;
-  stock: number;
-}
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { ProductosService, Producto } from '../services/productos';
 
 @Component({
   selector: 'app-administracion-basica',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormField, MatLabel, MatError, MatInput],
   templateUrl: './administracion-basica.component.html',
   styleUrl: './administracion-basica.component.css'
 })
 export class AdministracionBasicaComponent {
   private fb = inject(FormBuilder);
+  private productosService = inject(ProductosService);
 
-  // Lista simulada de productos (Inventario)
-  productos: Producto[] = [
-    { id: 1, nombre: 'Disco de Vinilo Vintage', precio: 450, stock: 12 },
-    { id: 2, nombre: 'Audífonos Retro Pink', precio: 890, stock: 5 }
-  ];
+  // Referencia a la lista de productos del servicio
+  productos = this.productosService.productos;
 
   // Reportes simulados
   reporteGuanacias: number = 14350;
@@ -54,12 +45,12 @@ export class AdministracionBasicaComponent {
         precio: Number(this.formProducto.value.precio),
         stock: Number(this.formProducto.value.stock)
       };
-      this.productos.push(nuevo);
-      this.formProducto.reset(); // Limpia el formulario
+      this.productosService.agregarProducto(nuevo);
+      this.formProducto.reset();
     }
   }
 
   eliminarProducto(id: number) {
-    this.productos = this.productos.filter(p => p.id !== id);
+    this.productosService.eliminarProducto(id);
   }
 }

@@ -254,6 +254,35 @@
   border-top: 2px solid rgba(2, 136, 209, 0.2);
 }
 
+/* Botón Agregar al Carrito */
+.btn-carrito {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, #0288d1, #0097a7);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(2, 136, 209, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-carrito:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(2, 136, 209, 0.5);
+  background: linear-gradient(135deg, #0097a7, #00838f);
+}
+
+.btn-carrito:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(2, 136, 209, 0.3);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .catalogo-header h1 {

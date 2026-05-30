@@ -1,57 +1,30 @@
-import { Component, inject, signal } from '@angular/core';
-import { NgIf, NgFor } from '@angular/common';
-import { Router,RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { CarritoService } from '../services/carrito';
 
 @Component({
   selector: 'app-carrito',
   standalone: true,
-  imports: [NgIf, NgFor, RouterLink],
+  imports: [],
   templateUrl: './carrito.html',
   styleUrl: './carrito.css',
 })
-
 export class Carrito {
-  router = inject(Router);
-   constructor() {
-     // Ítem ficticio para pruebas: permite probar la navegación al pago
-     this.agregarItem({ id: 999, nombre: 'Cobertor de prueba', precio: 49.9, cantidad: 1 });
-   }
-  // Señales para el estado del carrito
-  items = signal<any[]>([]);
-  subtotal = signal(0);
-  envio = signal(0);
+  private router = inject(Router);
+  private carritoService = inject(CarritoService);
 
-  // Computed para el total
+  // Exponer el carrito service al template
+  carrito = this.carritoService;
+  items = this.carritoService.items;
+  subtotal = this.carritoService.subtotal;
+  envio = this.carritoService.envio;
+
   get total(): number {
-    return this.subtotal() + this.envio();
+    return this.carritoService.total;
   }
 
-  // Método para agregar items (se usará desde catálogo)
-  agregarItem(item: any) {
-    const itemsActuales = this.items();
-    const existe = itemsActuales.find(i => i.id === item.id);
-
-    if (existe) {
-      existe.cantidad += item.cantidad;
-    } else {
-      itemsActuales.push(item);
-    }
-
-    this.items.set([...itemsActuales]);
-    this.actualizarTotal();
-  }
-
-  // Método para eliminar items
   eliminarItem(id: number) {
-    const itemsActuales = this.items().filter(i => i.id !== id);
-    this.items.set(itemsActuales);
-    this.actualizarTotal();
-  }
-
-  // Actualizar total
-  private actualizarTotal() {
-    const total = this.items().reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-    this.subtotal.set(total);
+    this.carritoService.eliminarItem(id);
   }
 
   procederAlPago() {

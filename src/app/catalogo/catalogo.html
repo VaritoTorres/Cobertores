@@ -13,36 +13,14 @@
 
   <!-- Contenedor de productos -->
   <div class="productos-grid">
-    <!-- Tarjeta producto 1 -->
-    <div class="producto-card nube-1">
-      <div class="producto-icon">☁️</div>
-      <h3>Cobertor Premium</h3>
-      <p class="producto-desc">Cobertor de algodón 100% premium</p>
-      <div class="producto-precio">$99.99</div>
-    </div>
-
-    <!-- Tarjeta producto 2 -->
-    <div class="producto-card nube-2">
-      <div class="producto-icon">⛅</div>
-      <h3>Cobertor Estándar</h3>
-      <p class="producto-desc">Excelente relación precio-calidad</p>
-      <div class="producto-precio">$59.99</div>
-    </div>
-
-    <!-- Tarjeta producto 3 -->
-    <div class="producto-card nube-3">
-      <div class="producto-icon">🌤️</div>
-      <h3>Cobertor Deluxe</h3>
-      <p class="producto-desc">La opción más elegida del año</p>
-      <div class="producto-precio">$79.99</div>
-    </div>
-
-    <!-- Tarjeta producto 4 -->
-    <div class="producto-card nube-4">
-      <div class="producto-icon">☁️</div>
-      <h3>Cobertor Eco</h3>
-      <p class="producto-desc">Sostenible y ecológico</p>
-      <div class="producto-precio">$89.99</div>
-    </div>
+    @for (cobertor of cobertores(); track cobertor.id) {
+      <div class="producto-card">
+        <div class="producto-icon">☁️</div>
+        <h3>{{ cobertor.nombre }}</h3>
+        <p class="producto-desc">{{ cobertor.descripcion || cobertor.nombre }}</p>
+        <div class="producto-precio">${{ cobertor.precio }}</div>
+        <button class="btn-carrito" (click)="agregarAlCarrito(cobertor)">Agregar al Carrito</button>
+      </div>
+    }
   </div>
 </section>

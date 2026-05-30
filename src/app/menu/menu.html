@@ -13,12 +13,15 @@
       <li><button class="menu-link" (click)="irAVista('contacto')">Contacto</button></li>
     </ul>
 
-    <!-- Carrito a la derecha -->
-    <div class="menu-carrito">
+    <!-- Carrito y Administración a la derecha -->
+    <div class="menu-acciones">
+      <button class="admin-btn" (click)="abrirAdminPassword()" title="Panel de Administración">
+        <span class="admin-icon">⚙️</span>
+        <span class="admin-label">Admin</span>
+      </button>
       <button class="carrito-btn" (click)="toggleCarrito()">
         <span class="carrito-icon">🛒</span>
         <span class="carrito-label">Carrito</span>
-        <span class="carrito-badge" *ngIf="false">0</span>
       </button>
     </div>
   </div>
@@ -31,3 +34,6 @@
     <app-carrito></app-carrito>
   </div>
 </div>
+
+<!-- Modal de contraseña para administración -->
+<app-admin-password></app-admin-password>
